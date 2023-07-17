@@ -1,0 +1,9 @@
+practice making instances of each table/class in sqlalchemy
+-use sqlal class to instantiate user or ticket or show
+-use db.session.add to add instance to the session
+-db.session.commit to save to db - in terminal
+use that syntax to create crud fx - in crud
+use crud fx to add into the seed database file
+
+will you buy a fine dog song
+
