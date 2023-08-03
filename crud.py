@@ -1,4 +1,4 @@
-from model import db, Show, Ticket, User, connect_to_db
+from model import db, Show, Ticket, User, Search, connect_to_db
 
 # napalm_death = Show(venue='DNA Lounge', show_name = 'death tour', location = 'address', ticket_price = 20, num_tickets = 200)
 
@@ -23,6 +23,12 @@ def create_user(email, password):
 def get_user_by_email(email):
     
     return User.query.filter(User.email == email).first()
+
+def create_search(genre, start_date, end_date, user_id):
+
+    search = Search(genre=genre, start_date=start_date, end_date=end_date, user_id=user_id)
+
+    return search
 
 # def get_all_shows
 

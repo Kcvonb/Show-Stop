@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Show Stop{% endblock %}
+
+{% block body %}
+<h1>Please complete your user registration by filling in the below information:</h1>
+<form action="/users" method="POST">
+    <h2>Name:</h2>
+        <input name="name">
+    <h2>User Name:</h2>
+        <input name="user_name">
+    <h2>Email Address:</h2>
+        <input name="email">
+    <h2>Password:</h2>
+        <input name="password">
+    <h2>Confirm Password:</h2>
+        <input name="confirm password">
+    <input type="submit">
+</form>
+{% endblock %}

@@ -30,6 +30,7 @@ class Ticket (db.Model):
     show = db.relationship("Show", back_populates="tickets")
     user = db.relationship("User", back_populates="tickets")
 
+
     def __repr__(self):
         return f'<Ticket ticket_id={self.ticket_id} ticket_price={self.ticket_price} show_id={self.show_id} user_id={self.user_id}>'
 
@@ -43,10 +44,27 @@ class User (db.Model):
     password = db.Column(db.String)
 
     tickets = db.relationship('Ticket', back_populates='user')
+    searches = db.relationship('Search', back_populates='user')
 
     def __repr__(self):
         return f'<User user_id={self.user_id} email={self.email}>'
     
+class Search (db.Model):
+
+    __tablename__ = 'searches'
+
+    search_id = db.Column(db.Integer,
+                          primary_key=True)
+    genre = db.Column(db.String)
+    start_date = db.Column(db.DateTime)
+    end_date = db.Column(db.DateTime)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+
+    user = db.relationship('User', back_populates='searches')
+                        
+    def __repr__(self):
+        return f'<Search search_id={self.search_id} genre={self.genre}>'
+                    
 def connect_to_db(app):
     """Connect the database to our Flask app."""
 

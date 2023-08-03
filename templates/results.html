@@ -1,0 +1,14 @@
+<h1>Results</h1>
+<h2>Click on the show link for more info or to purchase tickets!</h2>
+<ul>
+    {% for event in event_list %}
+      <li>{{ event['name'] }}</li>
+      <ul>
+        <li>{{ event['url'] }}</li>
+        <li><a href={{ event['url'] }}>{{ event['name'] }}</a></li>
+
+        <li>{{event.get("dates").get("start").get('localDate')}}</li>
+      </ul>
+      
+    {% endfor %}
+</ul>

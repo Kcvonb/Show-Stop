@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Show Stop{% endblock %}
+
+{% block body %}
+<h1>Fill out the below information to search</h1>
+<h2>Select Genre</h2>
+<form action="/search_info" method="POST">
+    <select name="genre">
+        <option value="pop">
+            Pop
+        </option>
+        <option value="rock">
+            Rock
+        </option>
+        <option value="hip-hop">
+            Hip Hop
+        </option>
+        <option value="metal">
+            Metal
+        </option>
+        <option value="punk">
+            Punk
+        </option>
+        <option value="folk">
+            Folk
+        </option>
+    </select>
+    <p>
+        <input type="submit">
+    </p>
+</form>
+
+{% endblock %}

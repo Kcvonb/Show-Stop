@@ -7,3 +7,40 @@ use crud fx to add into the seed database file
 
 will you buy a fine dog song
 
+>>> search=Search(genre='metal', start_date=None, end_date=None, user_id=1)
+>>> db.session.add(search)
+>>> db.session.commit
+<bound method commit of <sqlalchemy.orm.scoping.scoped_session object at 0x1076a7ed0>>
+>>> db.session.commit()
+
+(env) admin@admins-iMac Show-Stop % python3 -i crud.py
+Connected to db!
+>>> search = create_search('metal', None, None, 1)
+>>> db.session.add(search)
+>>> db.session.commit()
+
+(env) admin@admins-iMac Show-Stop % psql show-stop
+psql (14.7 (Homebrew))
+Type "help" for help.
+
+show-stop=# SELECT * FROM searches
+show-stop-# ;
+
+
+Getting info from API key:
+import os
+import requests
+>>> payload={'apikey': os.environ['TICKETMASTER_KEY'], 'city': 'San Francisco', 'keyword': 'music'} 
+
+Make another request with your updated payload. Check out the results you receive and notice how they differ from your initial results.
+
+>>> res = requests.get(url, params=payload)
+>>> data = res.json()
+>>> events = data['_embedded']['events']
+>>> events
+
+Events is a list
+each element in list is a dict
+keys that matter = name, url
+
+in jinja- loop through name, url to go to that event 
