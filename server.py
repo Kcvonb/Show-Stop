@@ -56,6 +56,11 @@ def search_info():
     # import pdb;pdb.set_trace()
     return render_template("results.html", event_list=events)
 
+@app.route("/login", methods=['POST'])
+def login():
+
+    return redirect('/search') 
+
 def remove_duplicates_from_list(input_list):
     return list(set(input_list))
 

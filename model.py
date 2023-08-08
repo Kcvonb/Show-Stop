@@ -64,7 +64,16 @@ class Search (db.Model):
                         
     def __repr__(self):
         return f'<Search search_id={self.search_id} genre={self.genre}>'
-                    
+    
+
+
+
+
+               
+
+
+
+
 def connect_to_db(app):
     """Connect the database to our Flask app."""
 
