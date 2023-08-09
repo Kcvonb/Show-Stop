@@ -58,8 +58,22 @@ def search_info():
 
 @app.route("/login", methods=['POST'])
 def login():
-
+    email = request.form.get("email")
+    password = request.form.get("password")
+    user = crud.get_user_by_email(email)
+    print(email)
+    print(password)
+    print (user)
+    if user is None:
+        flash('User not found')
+        return redirect('/')
+    if password == user.password:
+        #implement user page
+        #make sure temp inherit from base
+        flash('Login successful')
     return redirect('/search') 
+
+
 
 def remove_duplicates_from_list(input_list):
     return list(set(input_list))
