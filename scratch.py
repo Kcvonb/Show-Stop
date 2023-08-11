@@ -11,14 +11,33 @@ event = {'name': 'Dying Wish, Boundaries, Foreign Hands, Roman Candle', 'type': 
 
 import os
 import requests
+import datetime
 
-genre="pop"
+genre="metal"
 
-payload={'apikey': os.environ['TICKETMASTER_KEY'], 'city': 'San Francisco', 'keyword': 'music', 'classificationName': genre}
+htmldate= '2023-08-20'
+dateobj=datetime.datetime.strptime(htmldate,'%Y-%m-%d') 
+
+dateobj.isoformat()
+isostring=dateobj.isoformat() + 'Z'
+
+payload={'apikey': os.environ['TICKETMASTER_KEY'], 'city': 'San Francisco', 'keyword': 'music', 'classificationName': genre, 'startEndDateTime' : '2023-08-20T14:00:00Z, 2023-08-30T14:00:00Z'}
 res = requests.get("https://app.ticketmaster.com/discovery/v2/events.json", params=payload)
 data = res.json()
 
+# htmldate= '2023-08-20'
+# dateobj=datetime.datetime.strptime(htmldate,'%Y-%m-%d')
+
+# dateobj.isoformat()
+# isostring=dateobj.isoformat() + 'Z'
+#2020-07-08T14:00:00Z 
+
+#valid ISO 8601
+#https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior
+
+
 events = data['_embedded']['events']
+
 
 for event in events:
     print(event['name'])
@@ -28,5 +47,7 @@ for event in events:
     print("         date ==", event_dates["start"]['localDate'])
     print("         time ==", event_dates["start"].get('localTime'), "no time found for some reason")
     event_classifications = event.get("classifications", [])
+
+# [{'code': 'DIS1067', 'detail': 'Query param: startEndDateTime - Date must be of valid ISO 8601 date and time format {example: 2020-08-01T14:00:00Z}', 'status': '400', '_links': {'self': {'href': '/discovery/v2/errors.html#DIS1067'}}}, {'code': 'DIS1068', 'detail': 'Query param: startEndDateTime - Range must be of a valid format.  use * to designate an unbounded value. {example: range less then *,2023-08-12T14:00:00Z greater: 2023-08-12T14:00:00Z,* between: 2023-08-20T14:00:00Z,2023-08-30T14:00:00Z}', 'status': '400', '_links': {'self': {'href': '/discovery/v2/errors.html#DIS1068'}}}]
 
 

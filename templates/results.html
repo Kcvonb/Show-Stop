@@ -8,7 +8,17 @@
         <li><a href={{ event['url'] }}>{{ event['name'] }}</a></li>
 
         <li>{{event.get("dates").get("start").get('localDate')}}</li>
+        <li><input type="checkbox"
+          data-eventid="{{event.get('id')}}">
+        </input> Save </li>
       </ul>
+
       
     {% endfor %}
 </ul>
+<form>
+  <button>Save</button>
+ 
+  
+</form>
+<script src="/static/js/search_form.js"></script>
