@@ -1,18 +1,18 @@
-from model import db, Show, Ticket, User, Search, connect_to_db
+from model import db, Show, Saved, User, Search, connect_to_db
 
 # napalm_death = Show(venue='DNA Lounge', show_name = 'death tour', location = 'address', ticket_price = 20, num_tickets = 200)
 
-def create_show(venue, show_date, show_name, ticket_price, show_id):
+def create_show(venue, show_date, show_name, show_id):
 
-    show = Show(venue=venue, show_date=show_date, show_name=show_name, ticket_price=ticket_price, show_id=show_id)
+    show = Show(venue=venue, show_date=show_date, show_name=show_name, show_id=show_id)
 
     return show
 
-def create_ticket_with_id(user_id, show_id,ticket_price):
+def create_saved_with_id(user_id, show_id):
 
-    ticket = Ticket(user_id=user_id, show_id=show_id, ticket_price=ticket_price)
+    saved = Saved(user_id=user_id, show_id=show_id)
 
-    return ticket
+    return saved
 
 def create_user(email, password, name, user_name):
 

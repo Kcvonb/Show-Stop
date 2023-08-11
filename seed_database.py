@@ -20,14 +20,12 @@ user = crud.create_user('email','password','name','username')
 model.db.session.add(user)
 model.db.session.commit()
 
-show = crud.create_show(venue='venue', show_id='1', show_date=None, show_name='show_name', ticket_price=7,)
+show = crud.create_show(venue='venue', show_id='1', show_date=None, show_name='show_name')
 model.db.session.add(show)
 model.db.session.commit()
 
-ticket = crud.create_ticket_with_id(user.user_id, show.show_id, 20)
-model.db.session.add(ticket)
+saved = crud.create_saved_with_id(user.user_id, show.show_id)
+model.db.session.add(saved)
 model.db.session.commit()
 
-test = User(name='test', email='test@test.com', password='test', username='testy')
-model.db.session.add(test)
-model.db.session.commit()
+

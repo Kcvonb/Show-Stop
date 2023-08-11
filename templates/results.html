@@ -12,13 +12,16 @@
           data-eventid="{{event.get('id')}}">
         </input> Save </li>
       </ul>
-
+      <form>
+        <input type="hidden" value="{{ event['name']}}" class="event-name" name="event-name">
+        <input type="hidden" value="{{ event['id'] }}" class="event-id" name="event-id">
+        <input type="hidden" value='{{ event.get("dates").get("start").get("localDate")}}' class="date" name="date">
+        <button type="Submit">"Save"</button>
+       
+        
+      </form>
       
     {% endfor %}
 </ul>
-<form>
-  <button>Save</button>
- 
-  
-</form>
+
 <script src="/static/js/search_form.js"></script>

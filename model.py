@@ -11,27 +11,27 @@ class Show (db.Model):
     venue = db.Column(db.String)
     show_date = db.Column(db.DateTime)
     show_name = db.Column(db.String)
-    ticket_price = db.Column(db.Integer)
+   
 
 
-    tickets = db.relationship('Ticket', back_populates='show')
+    saves = db.relationship('Saved', back_populates='show')
 
     def __repr__(self):
         return f'<Show show_name={self.show_name} show_id={self.show_id}>'
 
-class Ticket (db.Model):
-    __tablename__ = 'tickets'
-    ticket_id = db.Column(db.Integer, primary_key=True)
+class Saved (db.Model):
+    __tablename__ = 'saves'
+    saved_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=True)
     show_id = db.Column(db.String, db.ForeignKey('shows.show_id'), nullable=True)
-    ticket_price = db.Column(db.Float)
+   
 
-    show = db.relationship("Show", back_populates="tickets")
-    user = db.relationship("User", back_populates="tickets")
+    show = db.relationship("Show", back_populates="saves")
+    user = db.relationship("User", back_populates="saves")
 
 
     def __repr__(self):
-        return f'<Ticket ticket_id={self.ticket_id} ticket_price={self.ticket_price} show_id={self.show_id} user_id={self.user_id}>'
+        return f'<Saved saved_id={self.saved_id} show_id={self.show_id} user_id={self.user_id}>'
 
 class User (db.Model):
 
@@ -44,7 +44,7 @@ class User (db.Model):
     name = db.Column(db.String)
     username = db.Column(db.String)
 
-    tickets = db.relationship('Ticket', back_populates='user')
+    saves = db.relationship('Saved', back_populates='user')
     searches = db.relationship('Search', back_populates='user')
 
     def __repr__(self):

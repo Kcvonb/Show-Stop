@@ -68,6 +68,7 @@ def search_info():
     # 'startEndDateTime' :  }
     res = requests.get("https://app.ticketmaster.com/discovery/v2/events.json", params=payload)
     data = res.json()
+    print(data)
     events = data['_embedded']['events']
     # print(events[0])
    
@@ -90,6 +91,9 @@ def login():
         #make sure temp inherit from base
         session ['user']=user.user_id
         flash('Login successful')
+    else:
+        flash('Password incorrect, try again')
+        return redirect('/')
     return redirect('/user') 
 
 @app.route("/user") #goal of app route is to redirect login to userpage
