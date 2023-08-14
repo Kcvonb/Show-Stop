@@ -104,6 +104,25 @@ def user():
     else:
         user = crud.get_user_by_id(user_id)
         return render_template('user.html', user = user)
+    
+@app.route('/saved', methods=['POST'])
+def saved():
+    event_id = request.json.get('event-id')
+    name = request.json.get('name')
+    date = request.json.get('date')
+    print(dir(request))
+    # import pdb; pdb.set_trace()
+    print('****************************')
+    print(event_id, name, date)
+    user_id = session.get('user')
+    show = crud.create_show(venue=None, show_date=date, show_name=name, show_id=event_id)
+    #relate show to a saved obj created
+    #add obj to db.session-commit
+    #send back to front end saying whether we were successful in getting done
+    #front end dom manipulation 
+    return 'this is a placeholder'
+
+
 
 
 

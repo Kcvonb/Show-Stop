@@ -13,10 +13,10 @@
         </input> Save </li>
       </ul>
       <form>
-        <input type="hidden" value="{{ event['name']}}" class="event-name" name="event-name">
-        <input type="hidden" value="{{ event['id'] }}" class="event-id" name="event-id">
+        <input type="hidden" value="{{ event['name']}}" class="event-name" name="name">
+        <input type="hidden" value="{{ event['id'] }}" class="event-id" name="eventId">
         <input type="hidden" value='{{ event.get("dates").get("start").get("localDate")}}' class="date" name="date">
-        <button type="Submit">"Save"</button>
+        <button type="Submit">Save</button>
        
         
       </form>
@@ -24,4 +24,4 @@
     {% endfor %}
 </ul>
 
-<script src="/static/js/search_form.js"></script>
+<script src="/static/js/saved_search.js"></script>
