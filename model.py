@@ -11,9 +11,8 @@ class Show (db.Model):
     venue = db.Column(db.String)
     show_date = db.Column(db.DateTime)
     show_name = db.Column(db.String)
+    url = db.Column(db.String)
    
-
-
     saves = db.relationship('Saved', back_populates='show')
 
     def __repr__(self):

@@ -107,20 +107,25 @@ def user():
     
 @app.route('/saved', methods=['POST'])
 def saved():
-    event_id = request.json.get('event-id')
+    show_id = request.json.get('show_id')
     name = request.json.get('name')
     date = request.json.get('date')
+    url = request.json.get('url')
     print(dir(request))
     # import pdb; pdb.set_trace()
-    print('****************************')
-    print(event_id, name, date)
+   
+    print(show_id, name, date)
     user_id = session.get('user')
-    show = crud.create_show(venue=None, show_date=date, show_name=name, show_id=event_id)
+    show = crud.create_show(venue=None, show_date=date, show_name=name, show_id=show_id, url=url)
+    db.session.add(show)
+    saved = crud.create_saved_with_id(user_id=user_id, show_id=show_id)
+    db.session.add(saved)
+    db.session.commit()
     #relate show to a saved obj created
     #add obj to db.session-commit
     #send back to front end saying whether we were successful in getting done
     #front end dom manipulation 
-    return 'this is a placeholder'
+    return{'message': 'Your show has been successfully saved.', 'status': 200}
 
 
 

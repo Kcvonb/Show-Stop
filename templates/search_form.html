@@ -2,52 +2,61 @@
 {% block title %}Show Stop{% endblock %}
 
 {% block body %}
-<h1>Fill out the below information to search</h1>
-<h2>Select Genre</h2>
-<form action="/search_info" method="POST">
-    <select name="genre">
-        <option value="rock">
-            Rock
-        </option>
-        <option value="hip-hop">
-            Hip Hop
-        </option>
-        <option value="metal">
-            Metal
-        </option>
-        <option value="punk">
-            Punk
-        </option>
-        <option value="folk">
-            Folk
-        </option>
-        <option value="country">
-            Country
-        </option>
-        <option value="electronic dance music">
-            Electronic Dance Music
-        </option>
-        <option value="techno">
-            Techno
-        </option>
-        <option value="rap">
-            Rap
-        </option>
-        <option value="festival">
-            Festival
-        </option>
+
+<div class="card text-bg-dark">
+    <img src="/static/kovid-rathee-bnzstUqRKnM-unsplash(1).jpg" class="card-img" alt="...">
+    <div class="card-img-overlay">
+      <h5 class="card-title search_form-title">Complete the below information to begin your search.</h5>
+      <p class="card-text"><form action="/search_info" method="POST">
+        <select name="genre">
+        <label>Genre</label>
+            <option value="rock">
+                Rock
+            </option>
+            <option value="hip-hop">
+                Hip Hop
+            </option>
+            <option value="metal">
+                Metal
+            </option>
+            <option value="punk">
+                Punk
+            </option>
+            <option value="folk">
+                Folk
+            </option>
+            <option value="country">
+                Country
+            </option>
+            <option value="electronic dance music">
+                Electronic Dance Music
+            </option>
+            <option value="techno">
+                Techno
+            </option>
+            <option value="rap">
+                Rap
+            </option>
+            <option value="festival">
+                Festival
+            </option>
+            
+     
+            
+        </select>
+        <label class="yellow-txt">Start date:</label>
+        <input type="date" name="start_date">
         
- 
-        
-    </select>
-    <label>Start date:</label>
-    <input type="date" name="start_date">
+        <label class="yellow-txt">End date:</label>
+        <input type="date" name="end_date">
     
-    <label>End date:</label>
-    <input type="date" name="end_date">
+        <button type="submit">Search</button>
+    
+    </form></p>
+      
+    </div>
+  </div>
 
-    <button type="submit">Search</button>
 
-</form>
 
 {% endblock %}

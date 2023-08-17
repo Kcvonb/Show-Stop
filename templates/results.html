@@ -1,27 +1,39 @@
-<h1>Results</h1>
-<h2>Click on the show link for more info or to purchase tickets!</h2>
+{% extends 'base.html' %}
+{% block title %}Show Stop{% endblock %}
+{% block body %}
+
+<h1 class="pink-txt">Results</h1>
+<h2 class="yellow-txt">Click on the show link for more info or to purchase tickets!</h2>
 <ul>
     {% for event in event_list %}
-      <li>{{ event['name'] }}</li>
+      <li class="teal-txt">{{ event['name'] }}</li>
       <ul>
-        <li>{{ event['url'] }}</li>
-        <li><a href={{ event['url'] }}>{{ event['name'] }}</a></li>
+        <li class="teal-txt">{{event.get("dates").get("start").get('localDate')}}</li>
+        <li><a href={{ event['url'] }}>{{ event['url'] }}</a></li></li>
+       
 
-        <li>{{event.get("dates").get("start").get('localDate')}}</li>
-        <li><input type="checkbox"
-          data-eventid="{{event.get('id')}}">
-        </input> Save </li>
+        
+       
       </ul>
       <form>
         <input type="hidden" value="{{ event['name']}}" class="event-name" name="name">
-        <input type="hidden" value="{{ event['id'] }}" class="event-id" name="eventId">
         <input type="hidden" value='{{ event.get("dates").get("start").get("localDate")}}' class="date" name="date">
+        <input type="hidden" value="{{ event['id'] }}" class="event-id" name="showId">
+        <input type="hidden" value="{{ event ['url'] }}" class="url" name="url">
         <button type="Submit">Save</button>
+      
        
         
       </form>
       
+      
+      
     {% endfor %}
 </ul>
 
+<h3 class="yellow-txt">Click <a href='/search'>here</a> to resume your search.</h3>
+<h3 class="yellow-txt">Click <a href='/user'>here</a> to return to your page.</h3>
+
 <script src="/static/js/saved_search.js"></script>
+
+{% endblock %}

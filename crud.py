@@ -2,9 +2,10 @@ from model import db, Show, Saved, User, Search, connect_to_db
 
 # napalm_death = Show(venue='DNA Lounge', show_name = 'death tour', location = 'address', ticket_price = 20, num_tickets = 200)
 
-def create_show(venue, show_date, show_name, show_id):
-
-    show = Show(venue=venue, show_date=show_date, show_name=show_name, show_id=show_id)
+def create_show(venue, show_date, show_name, show_id, url):
+    show = Show.query.get(show_id)
+    if show is None:
+        show = Show(venue=venue, show_date=show_date, show_name=show_name, show_id=show_id, url=url)
 
     return show
 

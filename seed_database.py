@@ -20,7 +20,7 @@ user = crud.create_user('email','password','name','username')
 model.db.session.add(user)
 model.db.session.commit()
 
-show = crud.create_show(venue='venue', show_id='1', show_date=None, show_name='show_name')
+show = crud.create_show(venue='venue', show_id='1', show_date=None, show_name='show_name', url='url')
 model.db.session.add(show)
 model.db.session.commit()
 

@@ -1,35 +1,68 @@
 
 
 {% extends 'base.html' %}
-{% block title %}Show Stop{% endblock %}
+
 
 {% block body %}
-  <h1>Show Stop.</h1>
-  <h3>Welcome to Show Stop. A one stop shop to find you perfect concert in San Francisco.</h3>
-  <h3>From heavy metal, to EDM, Show Stop has you covered.</h3>
-  <br>
-  <h2>Click <a href='/registration'>here</a> to sign up.</h2>
+
+<div class="card text-bg-dark">
+  <img src="/static/kovid-rathee-bnzstUqRKnM-unsplash(1).jpg" class="card-img" alt="..."
+      width: 300px; height: 150px;>
+  <div class="card-img-overlay">
+    <h5 class="card-title homepage-title">Show Stop.</h5>
+      
+    <p class="card-text yellow-txt intro-txt">Welcome to Show Stop. A one stop shop to find your perfect concert in San Francisco. 
+      <br>From heavy metal, to EDM, Show Stop has you covered.</p>
+    
+  </div>
+</div>
+
+
+
+</style>
+  <div class="row">
+    <div class="col-sm-6 mb-3 mb-sm-0">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Create an account.</h5>
+          <p class="card-text">Creating an account allows you to save concerts!</p>
+          <a href="/registration" class="btn btn-primary">Sign up</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">No account? No problem!</h5>
+          <p class="card-text">Click the link below to find a concert!</p>
+          <a href="/search" class="btn btn-primary">Search</a>
+        </div>
+      </div>
+    </div>
+  </div>
   
-  <br>
-  <h2>No account? No problem!</h2>
-  <h3>Click <a href='/search'>here</a> to begin your search.</h3>
-  <br>
-  <h2>Log In:</h2>
-  <form action="/login" method="POST">
-    <p>
-      Email <input type="text" name="email"> 
-    </p>
 
-    <p>
-      Password <input type="password" name="password">
-    </p>
-
-    <p>
-      <button type="Submit">Submit</button>
-    </p>
-    <br>
-  </form>
-
-  
 
 {% endblock %} 
+{% block login %}
+
+  <form action="/login" method="POST">
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       
+        
+        <li class="nav-item">
+        Email <input type="text" name="email"></li> 
+      
+        <li class="nav-item">Password<input type="password" name="password"></li>
+    
+        <button type="Submit">Submit</button>
+          
+      </ul>
+    </div>
+  </form>
+  <br>
+
+
+
+  {% endblock %}
