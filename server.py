@@ -55,22 +55,26 @@ def search_info():
     start_date = request.form.get('start_date')
     end_date = request.form.get('end_date')
     
-    #2023-08-18 2023-08-20
     start_date_obj=datetime.datetime.strptime(start_date,'%Y-%m-%d')
     end_date_obj=datetime.datetime.strptime(end_date,'%Y-%m-%d')
-
-    
+ 
     iso_range=start_date_obj.isoformat() + 'Z,' + end_date_obj.isoformat() + 'Z'
    
     print(iso_range)
 
     payload={'apikey': os.environ['TICKETMASTER_KEY'], 'city': 'San Francisco', 'keyword': 'music', 'classificationName': genre, 'startEndDateTime' : iso_range} 
-    # 'startEndDateTime' :  }
+    
     res = requests.get("https://app.ticketmaster.com/discovery/v2/events.json", params=payload)
     data = res.json()
     print(data)
-    events = data['_embedded']['events']
-    # print(events[0])
+
+    if '_embedded' in data:
+        events = data['_embedded']['events']
+
+    else: 
+        events = {}
+        flash('No results within your search, please broaden your search.')
+   
    
     return render_template("results.html", event_list=events)
 
